@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: deckofcards
+  title: Deck of Cards
   version: '1.0'
   description: Simulate a deck of cards
   license:
@@ -11,6 +11,9 @@ info:
     email: shawn.oster@gmail.com
 servers:
   - url: 'http://localhost:3000'
+    description: Local
+  - url: 'https://azure.com/deckofcards'
+    description: Development
 tags:
   - name: deck
     description: Deck operations

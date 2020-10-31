@@ -1,0 +1,27 @@
+{
+  "items": [
+    {
+      "type": "divider",
+      "title": "card"
+    },
+    {
+      "type": "item",
+      "title": "Draw a Card",
+      "uri": "docs/card/draw-a-card.md"
+    },
+    {
+      "type": "divider",
+      "title": "deck"
+    },
+    {
+      "type": "item",
+      "title": "Shuffle the Cards",
+      "uri": "docs/deck/shuffle-the-cards.md"
+    },
+    {
+      "type": "item",
+      "title": "Deck of Cards",
+      "uri": "reference/deckofcards.v1.yaml"
+    }
+  ]
+}
