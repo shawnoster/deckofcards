@@ -8,7 +8,7 @@ tags: [deck]
 https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
 ```
 
-Add deck_count as a GET or POST parameter to define the number of Decks you want to use. Blackjack typically uses 6 decks. The default is 1.
+Add `deck_count` as a GET or POST parameter to define the number of Decks you want to use. Blackjack typically uses 6 decks. The default is 1.
 
 ## Response
 
