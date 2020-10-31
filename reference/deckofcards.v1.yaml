@@ -64,7 +64,8 @@ paths:
   '/deck/{deck-id}/draw':
     get:
       summary: Draw a card
-      tags: []
+      tags:
+        - deck
       responses:
         '200':
           description: OK
@@ -81,26 +82,7 @@ paths:
                     uniqueItems: true
                     minItems: 1
                     items:
-                      type: object
-                      properties:
-                        image:
-                          type: string
-                          minLength: 1
-                          format: uri
-                        value:
-                          type: string
-                          minLength: 1
-                        suit:
-                          type: string
-                          minLength: 1
-                        code:
-                          type: string
-                          minLength: 1
-                      required:
-                        - image
-                        - value
-                        - suit
-                        - code
+                      $ref: '#/components/schemas/card'
                   deck_id:
                     type: string
                     minLength: 1
@@ -134,7 +116,8 @@ paths:
         required: true
     get:
       summary: Reshuffle the cards
-      tags: []
+      tags:
+        - deck
       responses:
         '200':
           description: OK
@@ -161,4 +144,45 @@ paths:
       operationId: get-deck-deck-id-shuffle
       description: Reshuffle the cards.
 components:
-  schemas: {}
+  schemas:
+    card:
+      description: A single card
+      type: object
+      x-examples:
+        example-1:
+          image: 'http://example.com'
+          value: string
+          suit: HEARTS
+          code: 8C
+      title: card
+      properties:
+        image:
+          type: string
+          minLength: 1
+          format: uri
+          description: URL to image file
+        value:
+          type: string
+          minLength: 1
+          description: 'Card value (A, 2, 3, etc.)'
+        suit:
+          type: string
+          minLength: 1
+          enum:
+            - HEARTS
+            - CLUBS
+            - SPADES
+            - HEARTS
+          example: HEARTS
+          description: 'Hearts, Clubs, Spades, Diamonds'
+        code:
+          type: string
+          maxLength: 2
+          minLength: 2
+          example: 8C
+          description: 'First character is the value, second is suit'
+      required:
+        - image
+        - value
+        - suit
+        - code
