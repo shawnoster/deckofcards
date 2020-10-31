@@ -2,7 +2,7 @@
 tags: [deck]
 ---
 
-# Shuffle the Cards
+# Shuffle the Deck
 
 ```
 https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
