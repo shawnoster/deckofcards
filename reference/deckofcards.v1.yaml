@@ -17,6 +17,7 @@ servers:
 tags:
   - name: deck
     description: Deck operations
+  - name: card
 paths:
   /deck/new/shuffle:
     get:
@@ -67,8 +68,6 @@ paths:
   '/deck/{deck-id}/draw':
     get:
       summary: Draw a card
-      tags:
-        - deck
       responses:
         '200':
           description: OK
@@ -103,6 +102,8 @@ paths:
             type: integer
           in: query
           name: count
+      tags:
+        - card
     parameters:
       - schema:
           type: string
