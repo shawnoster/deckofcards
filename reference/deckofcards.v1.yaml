@@ -125,5 +125,40 @@ paths:
         in: path
         required: true
         description: Deck identifier
+  '/deck/{deck-id}/shuffle':
+    parameters:
+      - schema:
+          type: string
+        name: deck-id
+        in: path
+        required: true
+    get:
+      summary: Reshuffle the cards
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  deck_id:
+                    type: string
+                    minLength: 1
+                  shuffled:
+                    type: boolean
+                  remaining:
+                    type: number
+                required:
+                  - success
+                  - deck_id
+                  - shuffled
+                  - remaining
+      operationId: get-deck-deck-id-shuffle
+      description: Reshuffle the cards.
 components:
   schemas: {}
