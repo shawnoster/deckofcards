@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: deckofcards
+  version: '1.0'
+  description: Simulate a deck of cards
+  license:
+    name: MIT License
+    url: 'https://github.com/shawnoster/deckofcards/blob/main/LICENSE'
+  contact:
+    name: Shawn Oster
+    email: shawn.oster@gmail.com
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: deck
+    description: Deck operations
+paths:
+  /deck/new/shuffle:
+    get:
+      summary: Your GET endpoint
+      tags: [deck]
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  deck_id:
+                    type: string
+                    minLength: 1
+                    example: 3p40paa87x90
+                  shuffled:
+                    type: boolean
+                  remaining:
+                    type: number
+                required:
+                  - success
+                  - deck_id
+                  - shuffled
+                  - remaining
+              examples:
+                example-1:
+                  value:
+                    success: true
+                    deck_id: 3p40paa87x90
+                    shuffled: true
+                    remaining: 52
+      operationId: get-deck-new-shuffle
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: deck-count
+          description: Number of decks to use
+      description: Shuffle the cards
+components:
+  schemas: {}
