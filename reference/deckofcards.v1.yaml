@@ -17,8 +17,9 @@ tags:
 paths:
   /deck/new/shuffle:
     get:
-      summary: Your GET endpoint
-      tags: [deck]
+      summary: Shuffle the cards
+      tags:
+        - deck
       responses:
         '200':
           description: OK
@@ -54,9 +55,75 @@ paths:
       parameters:
         - schema:
             type: integer
+            default: 1
+            example: 1
           in: query
           name: deck-count
           description: Number of decks to use
       description: Shuffle the cards
+  '/deck/{deck-id}/draw':
+    get:
+      summary: Draw a card
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  cards:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        image:
+                          type: string
+                          minLength: 1
+                          format: uri
+                        value:
+                          type: string
+                          minLength: 1
+                        suit:
+                          type: string
+                          minLength: 1
+                        code:
+                          type: string
+                          minLength: 1
+                      required:
+                        - image
+                        - value
+                        - suit
+                        - code
+                  deck_id:
+                    type: string
+                    minLength: 1
+                  remaining:
+                    type: number
+                required:
+                  - success
+                  - cards
+                  - deck_id
+                  - remaining
+      operationId: get-deck-deck-id-draw
+      description: Draw a card
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: count
+    parameters:
+      - schema:
+          type: string
+        name: deck-id
+        in: path
+        required: true
+        description: Deck identifier
 components:
   schemas: {}
