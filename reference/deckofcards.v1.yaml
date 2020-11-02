@@ -39,6 +39,7 @@ paths:
                     type: string
                     minLength: 1
                     example: 3p40paa87x90
+                    description: ID of deck to shuffle
                   shuffled:
                     type: boolean
                   remaining:
@@ -190,3 +191,23 @@ components:
         - value
         - suit
         - code
+    claim:
+      description: ''
+      type: object
+      properties:
+        IdentityProvider:
+          type: string
+          minLength: 1
+        IdpUserId:
+          type: string
+          minLength: 1
+        UserOrgLevel1:
+          type: array
+          items:
+            type:
+              - object
+              - string
+      required:
+        - IdentityProvider
+        - IdpUserId
+        - UserOrgLevel1
